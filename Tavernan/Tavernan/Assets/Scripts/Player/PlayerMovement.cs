@@ -28,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
         
         //Debug.Log(whichBarrel);
         //Debug.Log(barrelTrigger);
-        Debug.Log(heldBeverage);
+        //Debug.Log(heldBeverage);
 
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -47,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
-                Debug.Log("No Held Beverage");
+                Debug.Log(heldBeverage);
             }
         }
     }
