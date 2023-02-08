@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     private string whichBarrel;
     private bool placemetSpotTrigger;
     private bool barrelTrigger;
+    private string heldBeverage = "None";
 
     private void Awake()
     {
@@ -25,8 +26,9 @@ public class PlayerMovement : MonoBehaviour
         
         MoveCharacter(new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")));
         
-        Debug.Log(whichBarrel);
-        Debug.Log(barrelTrigger);
+        //Debug.Log(whichBarrel);
+        //Debug.Log(barrelTrigger);
+        Debug.Log(heldBeverage);
 
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -37,6 +39,15 @@ public class PlayerMovement : MonoBehaviour
             else
             {
                 Debug.Log("No Beverage");
+            }
+
+            if (placemetSpotTrigger)
+            {
+                PlaceBeverage();
+            }
+            else
+            {
+                Debug.Log("No Held Beverage");
             }
         }
     }
@@ -51,14 +62,39 @@ public class PlayerMovement : MonoBehaviour
         if (whichBarrel == "Beer")
         {
             Debug.Log("Holding Beer");
+            heldBeverage = "Beer";
         }
         else if (whichBarrel == "Wine")
         {
             Debug.Log("Holding Wine");
+            heldBeverage = "Wine";
         }
         else if (whichBarrel == "Water")
         {
             Debug.Log("Holding Water");
+            heldBeverage = "Water";
+        }
+    }
+
+    private void PlaceBeverage()
+    {
+        if (placemetSpotTrigger)
+        {
+            if (heldBeverage == "Beer")
+            {
+                Debug.Log("You Place Down Beer");
+                heldBeverage = "None";
+            }
+            else if (heldBeverage == "Wine")
+            {
+                Debug.Log("You Place Down Wine");
+                heldBeverage = "None";
+            }
+            else if (heldBeverage == "Water")
+            {
+                Debug.Log("You Place Down Water");
+                heldBeverage = "None";
+            }
         }
     }
 }
