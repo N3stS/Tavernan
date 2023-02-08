@@ -6,15 +6,12 @@ using UnityEngine;
 
 public class BarrelTrigger : MonoBehaviour
 {
-    [SerializeField] private GameObject beerBarrel;
-    [SerializeField] private GameObject wineBarrel;
-    [SerializeField] private GameObject waterBarrel;
-
-    private string whichBarrel;
+    public string whichBarrel;
+    public bool barrelTrigger;
 
     private void Update()
     {
-        Debug.Log(whichBarrel);
+        //Debug.Log(barrelTrigger);
     }
 
     private void OnTriggerEnter2D(Collider2D trigger)
@@ -22,19 +19,23 @@ public class BarrelTrigger : MonoBehaviour
         if (trigger.gameObject.tag == "Beer")
         {
             whichBarrel = "Beer";
+            barrelTrigger = true;
         }
-        if (trigger.gameObject.tag == "Wine")
+        else if (trigger.gameObject.tag == "Wine")
         {
             whichBarrel = "Wine";
+            barrelTrigger = true;
         }
-        if (trigger.gameObject.tag == "Water")
+        else if (trigger.gameObject.tag == "Water")
         {
             whichBarrel = "Water";
+            barrelTrigger = true;
         }
     }
 
     private void OnTriggerExit2D(Collider2D trigger)
     {
         whichBarrel = "None";
+        barrelTrigger = false;
     }
 }
